@@ -25,20 +25,19 @@ typedef enum results_enum
 	RESULT_ERR_CRC,
 	RESULT_ERR_CHECKSUM,
 	RESULT_ERR_NOT_FOUND
-
-
 }results_enum_t;
 
 
-typedef struct result_enum_struct
+typedef struct result_struct
 {
 	results_enum_t result;
 	uint8_t library_code;
 	uint8_t function_code;
-}result_enum_struct_t;
+}result_struct_t;
 
+result_struct_t results_return(results_enum_t result, uint8_t library_code, uint8_t function_code);
+void result_error_callback(result_struct_t result);
 
-result_enum_struct_t results_return(results_enum_t result, uint8_t library_code, uint8_t function_code);
 
 
 #ifdef __cplusplus
