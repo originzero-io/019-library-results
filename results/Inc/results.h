@@ -20,11 +20,14 @@ typedef enum results_enum
 	/* SUCCESS */
 	RESULT_SUCCESS = 1,
 	RESULT_CONNECTED,
+	RESULT_DISCONNECTED,
+
 
 /* ERRORS */
 	RESULT_ERR_UNKNOWN = -127,		/* Unknown error. */
 	RESULT_ERR_HEAP_MEM,
 	RESULT_ERR_TIMEOUT,				/* The operation timed out. */
+	RESULT_ERR_RECEIVE_TIMEOUT,		/* Receive timed out. */
 	RESULT_ERR_SIZE,
 	RESULT_ERR_NULL,				/* Function parameters or variables are null. */
 	RESULT_ERR_CRC, 				/* CRC error. */
@@ -41,7 +44,19 @@ typedef enum results_enum
 	RESULT_ERR_FSM_STATUS,			/* FSM status error. */
 	RESULT_ERR_ENABLE,				/* Enable error. */
 	RESULT_ERR_INIT,				/* Initialize error. */
-	RESULT_ERR_ERASE				/* Erase error. */
+	RESULT_ERR_ERASE,				/* Erase error. */
+	RESULT_ERR_CONNECT,
+	RESULT_ERR_NOTCONNECTED,
+	RESULT_ERR_PORT,
+	RESULT_ERR_LINK,
+	RESULT_ERR_TRANSMIT,
+	RESULT_ERR_LISTEN,
+	RESULT_ERR_BIND,
+
+	/* STATE */
+
+	RESULT_IN_THE_PROCESS
+
 }results_enum_t;
 /* @formatter:on */
 
