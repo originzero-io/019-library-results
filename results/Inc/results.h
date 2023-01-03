@@ -15,6 +15,7 @@ extern "C" {
 #include <stdint.h>
 
 #define RESULT_IS_ERROR(v) (v < 0)
+#define RESULT_IS_SUCCESS(v) (v > 0)
 
 #define RESULT_ERROR_BUFFER_COUNT 10
 
@@ -25,6 +26,7 @@ typedef enum results_enum
 	RESULT_SUCCESS = 1,
 	RESULT_CONNECTED,
 	RESULT_DISCONNECTED,
+	RESULT_PACKED,
 
 
 	/* ERRORS */
@@ -50,12 +52,13 @@ typedef enum results_enum
 	RESULT_ERR_INIT,                   /* Initialize error. */
 	RESULT_ERR_ERASE,                  /* Erase error. */
 	RESULT_ERR_CONNECTION,             /* Connection is error */
-	RESULT_ERR_NOTCONNECTED,			/* Connection is no*/
+	RESULT_ERR_NOTCONNECTED,           /* Connection is no*/
 	RESULT_ERR_PORT,                   /* Port is wrong */
 	RESULT_ERR_LINK,                   /* Ethernet link error*/
 	RESULT_ERR_TRANSMIT,               /* Transmit error */
 	RESULT_ERR_LISTEN,                 /* Listen error */
 	RESULT_ERR_BIND,                   /* Bind error */
+	RESULT_NOT_FOR_ME,                 /* Not for it */
 
 	/* STATE */
 	RESULT_IN_THE_PROCESS
