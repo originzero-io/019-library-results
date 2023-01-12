@@ -58,10 +58,12 @@ typedef enum results_enum
 	RESULT_ERR_TRANSMIT,               /* Transmit error */
 	RESULT_ERR_LISTEN,                 /* Listen error */
 	RESULT_ERR_BIND,                   /* Bind error */
-	RESULT_NOT_FOR_ME,                 /* Not for it */
+	RESULT_ERR_NETIF,                  /* Netif Error */
+
 
 	/* STATE */
-	RESULT_IN_THE_PROCESS
+	RESULT_IN_THE_PROCESS,
+	RESULT_NOT_FOR_ME                  /* Not for it */
 
 }results_enum_t;
 /* @formatter:on */
