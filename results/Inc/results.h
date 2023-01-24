@@ -59,6 +59,7 @@ typedef enum results_enum
 	RESULT_ERR_LISTEN,                 /* Listen error */
 	RESULT_ERR_BIND,                   /* Bind error */
 	RESULT_ERR_NETIF,                  /* Netif Error */
+	RESULT_ERR_ETHERNET,               /* Ethernet Error */
 
 
 	/* STATE */
