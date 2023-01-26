@@ -11,7 +11,7 @@
 static result_struct_t results_errors_quiue[RESULT_ERROR_BUFFER_COUNT];
 static uint8_t results_errors_quiue_index_counter;
 
-static void uart_write(uint8_t *string, uint32_t string_len);
+//static void uart_write(uint8_t *string, uint32_t string_len);
 
 void result_error_callback(results_enum_t result, uint8_t library_code, uint8_t function_code)
 {
@@ -39,7 +39,7 @@ void result_loop(void)
 			/*todo LOG WRITE */
 			char array[15];
 			int len = sprintf(&array[0], "%d.%d.%d\n", results_errors_quiue[results_errors_quiue_index_counter_loop].library_code, results_errors_quiue[results_errors_quiue_index_counter_loop].function_code, results_errors_quiue[results_errors_quiue_index_counter_loop].result);
-			uart_write((uint8_t*) &array[0], len);
+			//uart_write((uint8_t*) &array[0], len);
 			results_errors_quiue[results_errors_quiue_index_counter_loop].is_loaded = 0;
 			is_logged = 1;
 		}
@@ -53,13 +53,13 @@ void result_loop(void)
 
 	} while (0 == is_logged && RESULT_ERROR_BUFFER_COUNT > tried_count);
 }
-
+/*
 static void uart_write(uint8_t *string, uint32_t string_len)
 {
 	while (string_len--)
 	{
 		while ((scilinREG->FLR & 0x4) == 4)
 			; /* wait until busy */
-		sciSendByte(scilinREG, *string++); /* send out text   */
-	};
-}
+		/*sciSendByte(scilinREG, *string++); /* send out text   */
+/*};
+}*/
