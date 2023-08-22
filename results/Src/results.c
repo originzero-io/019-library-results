@@ -6,25 +6,50 @@
  */
 
 #include "results.h"
-#include "sci.h"
+//#include "sci.h"
 
+/**
+ * @brief Array to store error log entries.
+ *
+ * This array is used to store error log entries using the result_struct_t structure.
+ * It maintains a circular buffer to store errors for later analysis and retrieval.
+ */
 static result_struct_t results_errors_quiue[RESULT_ERROR_BUFFER_COUNT];
+
+/**
+ * @brief Index counter for the error log queue.
+ *
+ * This variable keeps track of the current index in the error log queue array.
+ * It is used to store error log entries and maintain a circular buffer.
+ */
 static uint8_t results_errors_quiue_index_counter;
+
 
 //static void uart_write(uint8_t *string, uint32_t string_len);
 
+/**
+ * @brief Error callback function to log errors in the result queue.
+ *
+ * This function logs an error with the provided result code, library code, and function code
+ * into the result errors queue for later analysis.
+ *
+ * @param[in] result The result or error code to log.
+ * @param[in] library_code An 8-bit code identifying the library/module related to the error.
+ * @param[in] function_code An 8-bit code identifying the specific function within the library/module.
+ */
 void result_error_callback(results_enum_t result, uint8_t library_code, uint8_t function_code)
 {
-	results_errors_quiue[results_errors_quiue_index_counter].result = result;
-	results_errors_quiue[results_errors_quiue_index_counter].library_code = library_code;
-	results_errors_quiue[results_errors_quiue_index_counter].function_code = function_code;
-	results_errors_quiue[results_errors_quiue_index_counter].is_loaded = 1;
+    results_errors_quiue[results_errors_quiue_index_counter].result = result;
+    results_errors_quiue[results_errors_quiue_index_counter].library_code = library_code;
+    results_errors_quiue[results_errors_quiue_index_counter].function_code = function_code;
+    results_errors_quiue[results_errors_quiue_index_counter].is_loaded = 1;
 
-	if (RESULT_ERROR_BUFFER_COUNT < (++results_errors_quiue_index_counter))
-	{
-		results_errors_quiue_index_counter = 0;
-	}
+    if (RESULT_ERROR_BUFFER_COUNT < (++results_errors_quiue_index_counter))
+    {
+        results_errors_quiue_index_counter = 0;
+    }
 }
+
 
 void result_loop(void)
 {
